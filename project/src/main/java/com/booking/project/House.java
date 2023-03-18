@@ -2,6 +2,9 @@ package com.booking.project;
 
 import jakarta.persistence.*;
 
+/**
+ * This is a data Class. It is used to match the attributes from the database.
+ */
 @Entity
 @Table(name = "houses")
 public class House {
