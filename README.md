@@ -6,7 +6,7 @@ The site offers the user ***photos*** for every room in each house, together wit
 This website wants to be as ***easy to use*** as possible.
 
 ## Functionalities:
-The user can select which house he wants from the 2 available, and then the proper page will be displayed for him. Each house will have specific details, different disponibility for a reservation, basically they work almost completely independent (except that they can have some common facilities).
+The user can select which house he wants from the 2 available, and then the proper page will be displayed for him. Each house will have specific details, different disponibility for a reservation, basically they work almost completely independent (except that they can have some common facilities).    
 The ***user*** can also:
 - view the photos for the selected house
 - give a review for a house
@@ -23,11 +23,11 @@ The ***admin*** can do the following operations:
 
 Two different users will be able to access the site, and they are **the admin**, and **the normal user**, which will be later divided into **follower** (for users who wants to be notified when the house will be free for a reservation) or **client** (for users who make a reservation - they are tagged as a "client" in the data base).
 
-### API Requirements
+## API Requirements:
 Generic **CRUD** operations for the management of rooms, bathrooms, facilities and others.
 There will be more specific API's built along the way of developing this application and they will be added here.
 
-### Data Model
+## Data Model:
 The relational database is built using **[PostgreSQL]**.
 
 
