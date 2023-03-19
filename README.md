@@ -28,8 +28,10 @@ Generic **CRUD** operations for the management of rooms, bathrooms, facilities a
 There will be more specific API's built along the way of developing this application and they will be added here.
 
 ## Data Model:
-The relational database is built using **[PostgreSQL]**.
+The relational database is built using **[PostgreSQL]**.   
+*Database Diagram*:    
 
+![GuestHouse](https://user-images.githubusercontent.com/101935675/226185466-4733cdb5-f083-415d-a8f7-b59e65a620a3.png)
 
 
 [PostgreSQL]: <http://postgresql.org>
