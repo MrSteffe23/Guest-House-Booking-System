@@ -61,6 +61,30 @@ public class HouseService implements IHouseService{
     }
 
     /**
+     * First, this method checks to see if a House with the specified id exists, so that it can be updated.<br>
+     * Second, The method validates the new House name in case it's different from the one with the same id.<br>
+     * Then, the House extracted with the specified id is updated and then saved in the database.
+     * @param id the id of the House to be updated.
+     * @param house the House with new specifications.
+     */
+    @Override
+    public void updateHouse(Long id, House house) {
+        House houseToUpdate = houseRepository.findById(id).orElseThrow(
+                () -> new IllegalStateException(String.format("The House with id %s doesn't exist.", id))
+        );
+        if(!house.getName().equals(houseToUpdate.getName())){
+            validateName(house.getName());
+        }
+
+        houseToUpdate.setAddress(house.getAddress());
+        houseToUpdate.setLocation(house.getLocation());
+        houseToUpdate.setName(house.getName());
+        houseToUpdate.setPrice(house.getPrice());
+
+        houseRepository.save(houseToUpdate);
+    }
+
+    /**
      * Checks if the database have a House called "name". If yes, then this method throws
      * an error with a message, if not, it does nothing.
      * @param name the name of a possible House.

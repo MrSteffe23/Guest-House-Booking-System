@@ -24,4 +24,11 @@ public interface IHouseService {
      * @param id the id of the House to be deleted.
      */
     void deleteHouse(Long id);
+
+    /**
+     * Method used to update a House with different details (if the House exists).
+     * @param id the id of the House to be updated.
+     * @param house the House new specifications.
+     */
+    void updateHouse(Long id, House house);
 }

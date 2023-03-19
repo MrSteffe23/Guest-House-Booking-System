@@ -48,4 +48,14 @@ public class HouseController {
     public void deleteHouse(@PathVariable Long id){
         houseService.deleteHouse(id);
     }
+
+    /**
+     * Updates a House from the database with new specifications.
+     * @param id the id of the House to be updated.
+     * @param house the House with new specifications.
+     */
+    @PutMapping("/{id}")
+    public void updateHouse(@PathVariable Long id,@RequestBody House house){
+        houseService.updateHouse(id, house);
+    }
 }
