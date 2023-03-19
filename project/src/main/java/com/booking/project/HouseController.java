@@ -39,4 +39,13 @@ public class HouseController {
     public void createHouse(@RequestBody House house){
         houseService.createHouse(house);
     }
+
+    /**
+     * Deletes a House from the database, if possible.
+     * @param id the id of the House to be deleted.
+     */
+    @DeleteMapping("/{id}")
+    public void deleteHouse(@PathVariable Long id){
+        houseService.deleteHouse(id);
+    }
 }

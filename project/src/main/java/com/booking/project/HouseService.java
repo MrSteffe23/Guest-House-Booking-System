@@ -46,6 +46,21 @@ public class HouseService implements IHouseService{
     }
 
     /**
+     * First, this method checks to see if the database have a house with the specified id. If yes,
+     * the house is being deleted, otherwise, an exception is thrown.
+     * @param id the id of the House to be deleted.
+     * @throws IllegalStateException if the database doesn't have a house with the specified id.
+     */
+    @Override
+    public void deleteHouse(Long id) {
+        boolean houseExists = houseRepository.existsById(id);
+        if(!houseExists){
+            throw new IllegalStateException(String.format("The house with id %s doesn't exist.", id));
+        }
+        houseRepository.deleteById(id);
+    }
+
+    /**
      * Checks if the database have a House called "name". If yes, then this method throws
      * an error with a message, if not, it does nothing.
      * @param name the name of a possible House.

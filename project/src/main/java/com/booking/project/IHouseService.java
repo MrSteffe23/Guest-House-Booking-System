@@ -18,4 +18,10 @@ public interface IHouseService {
      * @param house a new House to insert in the database
      */
     void createHouse(House house);
+
+    /**
+     * Method used to delete a House from the database (if the House exists).
+     * @param id the id of the House to be deleted.
+     */
+    void deleteHouse(Long id);
 }
