@@ -1,9 +1,6 @@
 package com.booking.project.facility;
 
-import com.booking.project.house.House;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
 
 /**
  * This Interface is responsible for the lower level logic.<br>

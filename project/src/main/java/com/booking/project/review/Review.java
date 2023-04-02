@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "reviews")
 public class Review {
-
     @Id
     @SequenceGenerator(
             name = "review_sequence",
