@@ -1,9 +1,5 @@
 package com.booking.project.facility;
 
-import com.booking.project.house.House;
-import com.booking.project.house.HouseController;
-import com.booking.project.house.HouseService;
-import com.booking.project.house.IHouseService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

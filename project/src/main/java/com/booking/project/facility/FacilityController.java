@@ -1,6 +1,5 @@
 package com.booking.project.facility;
 
-import com.booking.project.house.HouseService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -12,6 +12,4 @@ import java.util.Optional;
  * Here you can define queries, or use some predefined methods.
  */
 public interface FacilityRepository extends JpaRepository<Facility, Long> {
-    Optional<House> getFacilityByfacilityName(String facilityName);
-
 }
