@@ -17,7 +17,6 @@ public class AdminService implements IAdminService{
      * Attribute which represents the DataAccess layer.
      */
     private final AdminRepository adminRepository;
-
     /**
      * Constructor which have the role to implement Dependency Injection for the adminRepository attribute.
      * @param adminRepository the reference to the DataAccess layer.

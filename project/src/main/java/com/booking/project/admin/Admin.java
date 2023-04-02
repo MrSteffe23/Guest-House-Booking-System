@@ -1,5 +1,6 @@
 package com.booking.project.admin;
 
+import com.booking.project.reservation.Reservation;
 import jakarta.persistence.*;
 
 /**
@@ -7,7 +8,7 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name = "admin")
-public class Admin {
+public class Admin implements AdminObserver{
     @Id
     @SequenceGenerator(
             name = "admin_sequence",
@@ -53,5 +54,10 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public void update(Reservation reservation, String notificationType) {
+        System.out.printf("New notification: " + notificationType + " --> " + reservation.toString() + "\n");
     }
 }

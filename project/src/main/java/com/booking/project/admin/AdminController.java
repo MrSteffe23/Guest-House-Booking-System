@@ -11,7 +11,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/v1/admins")
-public class AdminController {
+public class AdminController{
     private final IAdminService adminService;
 
     /**
@@ -38,6 +38,7 @@ public class AdminController {
     @PostMapping
     public void createAdmin(@RequestBody Admin admin){
         adminService.createAdmin(admin);
+
     }
 
     /**
@@ -48,6 +49,4 @@ public class AdminController {
     public void deleteAdmin(@PathVariable Long id){
         adminService.deleteAdmin(id);
     }
-
-
 }

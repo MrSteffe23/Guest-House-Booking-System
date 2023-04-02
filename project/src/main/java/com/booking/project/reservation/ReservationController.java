@@ -13,7 +13,6 @@ import java.util.List;
 @RequestMapping("/api/v1/reservations")
 public class ReservationController {
     private final IReservationService reservationService;
-
     /**
      * Constructor which have the role to implement Dependency Injection for the reservationService attribute.
      * @param reservationService the reference to the Service layer.

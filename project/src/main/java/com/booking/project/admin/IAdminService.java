@@ -25,5 +25,4 @@ public interface IAdminService {
      * @param id the id of the Admin to be deleted.
      */
     void deleteAdmin(Long id);
-
 }

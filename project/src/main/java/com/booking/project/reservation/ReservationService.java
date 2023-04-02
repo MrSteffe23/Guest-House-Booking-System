@@ -1,8 +1,9 @@
 package com.booking.project.reservation;
 
+import com.booking.project.admin.Admin;
+import com.booking.project.admin.AdminRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,18 +13,20 @@ import java.util.Optional;
  * Here is all the logic of the application.
  */
 @Service
-public class ReservationService implements IReservationService{
+public class ReservationService implements IReservationService, ReservationObservable{
     /**
-     * Attribute which represents the DataAccess layer.
+     * Attributes which represents the DataAccess layer.
      */
     private final ReservationRepository reservationRepository;
+    private final AdminRepository adminRepository;
 
     /**
      * Constructor which have the role to implement Dependency Injection for the reservationRepository attribute.
      * @param reservationRepository the reference to the DataAccess layer.
      */
-    public ReservationService(ReservationRepository reservationRepository) {
+    public ReservationService(ReservationRepository reservationRepository, AdminRepository adminRepository) {
         this.reservationRepository = reservationRepository;
+        this.adminRepository = adminRepository;
     }
 
     /**
@@ -54,6 +57,7 @@ public class ReservationService implements IReservationService{
         //reservation.setStartDate(LocalDate.of(2023,2,4));
         //reservation.setEndDate(LocalDate.of(2023,2,23));
         reservationRepository.save(reservation);
+        notifyAdmins(reservation, "new");
     }
 
     /**
@@ -72,6 +76,7 @@ public class ReservationService implements IReservationService{
         reservationToUpdate.setStartDate(reservation.getStartDate());
         reservationToUpdate.setEndDate(reservation.getEndDate());
 
+        notifyAdmins(reservation, "update");
         reservationRepository.save(reservation);
     }
 
@@ -84,7 +89,9 @@ public class ReservationService implements IReservationService{
     @Override
     public void deleteReservation(Long id) {
         checkValidIdReservation(id);
+        Optional<Reservation> reservationOptional = reservationRepository.findById(id);
         reservationRepository.deleteById(id);
+        notifyAdmins(reservationOptional.get(), "delete");
     }
 
     /**
@@ -96,5 +103,18 @@ public class ReservationService implements IReservationService{
         if(!reservationOptional.isPresent()){
             throw new IllegalStateException(String.format("The Reservation with id %s doesn't exist.", id));
         }
+    }
+
+    /**
+     * This method represents the Observable from the design pattern called Observable.
+     * Once a reservation is added, removed or changed, all the admins are notified via an email.
+     * @param reservation the reservation which is added, deleted or updated.
+     * @param notificationType the type of the change: new/delete/update
+     */
+    @Override
+    public void notifyAdmins(Reservation reservation, String notificationType) {
+        List<Admin> admins = adminRepository.findAll();
+        for(Admin admin: admins)
+            admin.update(reservation, notificationType);
     }
 }

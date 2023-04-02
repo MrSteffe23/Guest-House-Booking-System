@@ -3,7 +3,6 @@ package com.booking.project.reservation;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * This is a data Class. It is used to match the attributes from the database.
@@ -77,5 +76,16 @@ public class Reservation {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", idHouse=" + idHouse +
+                ", idClient=" + idClient +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
     }
 }
