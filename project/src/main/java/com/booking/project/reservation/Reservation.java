@@ -2,6 +2,7 @@ package com.booking.project.reservation;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -23,10 +24,10 @@ public class Reservation {
     private Long idHouse;
     private Long idClient;
 
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
 
-    public Reservation(Long id, Long idHouse, Long idClient, Date startDate, Date endDate) {
+    public Reservation(Long id, Long idHouse, Long idClient, LocalDate startDate, LocalDate endDate) {
         this.id = id;
         this.idHouse = idHouse;
         this.idClient = idClient;
@@ -62,19 +63,19 @@ public class Reservation {
         this.idClient = idClient;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 }

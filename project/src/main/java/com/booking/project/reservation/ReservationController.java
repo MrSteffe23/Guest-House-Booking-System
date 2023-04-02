@@ -1,7 +1,5 @@
 package com.booking.project.reservation;
 
-import com.booking.project.house.HouseService;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

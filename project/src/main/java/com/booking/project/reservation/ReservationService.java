@@ -1,9 +1,8 @@
 package com.booking.project.reservation;
 
-import com.booking.project.house.House;
-import com.booking.project.house.IHouseService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +51,8 @@ public class ReservationService implements IReservationService{
      */
     @Override
     public void createReservation(Reservation reservation) {
+        reservation.setStartDate(LocalDate.of(2023,2,4));
+        reservation.setEndDate(LocalDate.of(2023,2,23));
         reservationRepository.save(reservation);
     }
 
