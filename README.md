@@ -44,6 +44,10 @@ Every endpoint starts with "localhost:8080" and continues with the second part o
 ### Admin 
 - "/api/v1/admins" -> this is the endpoint for the admins. An admin can be created, deleted or read, nothing more.     
 
+## Design Pattern
+- **Observer Pattern**:     
+This design pattern was used for notifying every admin registered in database in case of a change in *reservations* table. The **ReservationService** implements the interface called **ReservationObservable** which has only one method, used for notifying all admins. On the other hand, **Admin** implements the interface called **AdminObserver**, which has also one method called **update**. This way, every time a client creates a new reservation, deletes a reservation or just updates an existing one, every admin from the database will be notified via an email, specifying what happend through a specific message (if someone created a new reservation, if someone deleted one or an existing reservation was modified).    
+
 ## Data Model:
 The relational database is built using **[PostgreSQL]**.   
 *Database Diagram*:    
