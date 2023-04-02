@@ -24,8 +24,25 @@ The ***admin*** can do the following operations:
 Two different users will be able to access the site, and they are **the admin**, and **the normal user**, which will be later divided into **follower** (for users who wants to be notified when the house will be free for a reservation) or **client** (for users who make a reservation - they are tagged as a "client" in the data base).
 
 ## API Requirements:
-Generic **CRUD** operations for the management of rooms, bathrooms, facilities and others.
-There will be more specific API's built along the way of developing this application and they will be added here.
+Every endpoint starts with "localhost:8080" and continues with the second part of the address. This application contains generic **CRUD** operations for the management of:     
+### Houses   
+- "/api/v1/houses" -> this address is responsible for house management. These endpoints are for create, read, update and delete a house from the database     
+    "/api/v1/houses/id" -> this is for update and delete, where *id* is the *id* of the house that needs to be changed
+### Facilities 
+- "/api/v1/facilities" -> this address is responsible for the management of facilities. It consists of create, read, update and delete    
+    "/api/v1/facilities/id" -> specific for update and delete
+### Reservations 
+- "/api/v1/reservations" -> address used to create, read, update and delete reservations from the database.    
+    "/api/v1/reservations/id" -> specific for update and delete
+### Reviews 
+- "/api/v1/reviews" -> address used to controll the reviews added by some users. It consists of create, delete
+    "/api/v1/reviews/id" -> specific for update and delete
+### User 
+- "/api/v1/users" -> the users are manipulated at this endpoint. They can be only created, deleted, or read, without updating.
+### Client 
+- "/api/v1/clients" -> every client which makes a reservation is added in the database through this endpoint. For the moment, a client can only be created or read, but they will get more options soon
+### Admin 
+- "/api/v1/admins" -> this is the endpoint for the admins. An admin can be created, deleted or read, nothing more.     
 
 ## Data Model:
 The relational database is built using **[PostgreSQL]**.   
