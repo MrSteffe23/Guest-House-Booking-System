@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 /**
  * Class which implements the contract of the interface {@link IHouseService}. <br>
@@ -41,6 +42,7 @@ public class AdminService implements IAdminService{
     @Override
     public void createAdmin(Admin admin) {
         validateUsername(admin.getUsername());
+        validateEmail(admin.getEmail());
         adminRepository.save(admin);
     }
 
@@ -77,6 +79,19 @@ public class AdminService implements IAdminService{
         Optional<Admin> adminOptional = adminRepository.getHouseByusername(username);
         if(adminOptional.isPresent()){
             throw new IllegalStateException(String.format("The admin %s already exists", username));
+        }
+    }
+
+    /**
+     * Verifies if the String "email" is a valid email
+     * @param email the String which is tested for an email
+     * @throws IllegalStateException if the String given as parameter it's not an email
+     */
+    private void validateEmail(String email){
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        if(pattern.matcher(email).matches() == false){
+            throw new IllegalStateException(String.format("The email %s it's not valid for an admin. Please insert another one", email));
         }
     }
 }

@@ -21,11 +21,13 @@ public class Admin implements AdminObserver{
     private Long id;
     private String username;
     private String password;
+    private String email;
 
-    public Admin(Long id, String username, String password) {
+    public Admin(Long id, String username, String password, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.email = email;
     }
 
     public Admin(){
@@ -56,6 +58,19 @@ public class Admin implements AdminObserver{
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Method which notifies each admin about a change in Reservation table
+     * @param reservation the changed reservation
+     * @param notificationType the change type (new/delete/update)
+     */
     @Override
     public void update(Reservation reservation, String notificationType) {
         System.out.printf("New notification: " + notificationType + " --> " + reservation.toString() + "\n");

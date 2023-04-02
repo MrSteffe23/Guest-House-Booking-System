@@ -65,7 +65,7 @@ public class ClientService implements IClientService{
     }
 
     /**
-     * Validates of the String "email" is a valid email
+     * Verifies if the String "email" is a valid email
      * @param email the String which is tested for an email
      * @throws IllegalStateException if the String given as parameter it's not an email
      */
@@ -73,7 +73,7 @@ public class ClientService implements IClientService{
         String regex = "^(.+)@(.+)$";
         Pattern pattern = Pattern.compile(regex);
         if(pattern.matcher(email).matches() == false){
-            throw new IllegalStateException(String.format("The email %s it's not valid. Please insert another one", email));
+            throw new IllegalStateException(String.format("The email %s it's not valid for a client. Please insert another one", email));
         }
     }
 
