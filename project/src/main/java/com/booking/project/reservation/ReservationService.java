@@ -51,8 +51,8 @@ public class ReservationService implements IReservationService{
      */
     @Override
     public void createReservation(Reservation reservation) {
-        reservation.setStartDate(LocalDate.of(2023,2,4));
-        reservation.setEndDate(LocalDate.of(2023,2,23));
+        //reservation.setStartDate(LocalDate.of(2023,2,4));
+        //reservation.setEndDate(LocalDate.of(2023,2,23));
         reservationRepository.save(reservation);
     }
 

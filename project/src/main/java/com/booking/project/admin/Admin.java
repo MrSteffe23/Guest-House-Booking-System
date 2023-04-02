@@ -1,4 +1,4 @@
-package com.booking.project.user;
+package com.booking.project.admin;
 
 import jakarta.persistence.*;
 
@@ -6,26 +6,28 @@ import jakarta.persistence.*;
  * This is a data Class. It is used to match the attributes from the database.
  */
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "admin")
+public class Admin {
     @Id
     @SequenceGenerator(
-            name = "user_sequence",
+            name = "admin_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
-            generator = "user_sequence",
+            generator = "admin_sequence",
             strategy = GenerationType.SEQUENCE
     )
-    protected Long id;
-    protected String username;
+    private Long id;
+    private String username;
+    private String password;
 
-    public User(Long id, String username) {
+    public Admin(Long id, String username, String password) {
         this.id = id;
         this.username = username;
+        this.password = password;
     }
 
-    public User(){
+    public Admin(){
 
     }
 
@@ -43,5 +45,13 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
