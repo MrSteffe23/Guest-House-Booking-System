@@ -68,11 +68,18 @@ public class Admin implements AdminObserver{
 
     /**
      * Method which notifies each admin about a change in Reservation table
-     * @param reservation the changed reservation
+     * @param changedReservation the changed reservation
+     * @param oldReservation the old reservation in case of an update, otherwise is null
      * @param notificationType the change type (new/delete/update)
      */
     @Override
-    public void update(Reservation reservation, String notificationType) {
-        System.out.printf("New notification: " + notificationType + " --> " + reservation.toString() + "\n");
+    public void update(Reservation changedReservation, Reservation oldReservation, String notificationType) {
+        if(notificationType.equals("update")){
+            System.out.printf("New notification: " + notificationType + " --> " + " From: " + oldReservation.toString()
+                    + "\nTo: " + changedReservation.toString() +"\n");
+        }
+        else {
+            System.out.printf("New notification: " + notificationType + " --> " + changedReservation.toString() + "\n");
+        }
     }
 }

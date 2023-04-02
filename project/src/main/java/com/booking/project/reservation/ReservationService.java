@@ -57,7 +57,7 @@ public class ReservationService implements IReservationService, ReservationObser
         //reservation.setStartDate(LocalDate.of(2023,2,4));
         //reservation.setEndDate(LocalDate.of(2023,2,23));
         reservationRepository.save(reservation);
-        notifyAdmins(reservation, "new");
+        notifyAdmins(reservation, null, "new");
     }
 
     /**
@@ -70,14 +70,19 @@ public class ReservationService implements IReservationService, ReservationObser
     public void updateReservation(Reservation reservation, Long id) {
         checkValidIdReservation(id);
         Reservation reservationToUpdate = reservationRepository.findById(id).get();
-
+        Reservation oldReservation = null;
+        try {
+            oldReservation = (Reservation) reservationToUpdate.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
         reservationToUpdate.setIdClient(reservation.getIdClient());
         reservationToUpdate.setIdHouse(reservation.getIdHouse());
         reservationToUpdate.setStartDate(reservation.getStartDate());
         reservationToUpdate.setEndDate(reservation.getEndDate());
 
-        notifyAdmins(reservation, "update");
-        reservationRepository.save(reservation);
+        notifyAdmins(reservationToUpdate, oldReservation,"update");
+        reservationRepository.save(reservationToUpdate);
     }
 
     /**
@@ -91,7 +96,7 @@ public class ReservationService implements IReservationService, ReservationObser
         checkValidIdReservation(id);
         Optional<Reservation> reservationOptional = reservationRepository.findById(id);
         reservationRepository.deleteById(id);
-        notifyAdmins(reservationOptional.get(), "delete");
+        notifyAdmins(reservationOptional.get(), null,"delete");
     }
 
     /**
@@ -108,13 +113,14 @@ public class ReservationService implements IReservationService, ReservationObser
     /**
      * This method represents the Observable from the design pattern called Observable.
      * Once a reservation is added, removed or changed, all the admins are notified via an email.
-     * @param reservation the reservation which is added, deleted or updated.
+     * @param changedReservation the changed reservation which is added or deleted
+     * @param oldReservation the old reservation in case notificationType = "update", otherwise it is null
      * @param notificationType the type of the change: new/delete/update
      */
     @Override
-    public void notifyAdmins(Reservation reservation, String notificationType) {
+    public void notifyAdmins(Reservation changedReservation, Reservation oldReservation, String notificationType) {
         List<Admin> admins = adminRepository.findAll();
         for(Admin admin: admins)
-            admin.update(reservation, notificationType);
+            admin.update(changedReservation, oldReservation, notificationType);
     }
 }

@@ -7,8 +7,9 @@ package com.booking.project.reservation;
 public interface ReservationObservable {
     /**
      * Method used to notify some Observers
-     * @param reservation the changed reservation
+     * @param changedReservation the changed reservation
+     * @param oldReservation the old reservation in case notificationType is "update"
      * @param notificationType the type of reservation (new/delete/update)
      */
-    void notifyAdmins(Reservation reservation, String notificationType);
+    void notifyAdmins(Reservation changedReservation, Reservation oldReservation, String notificationType);
 }

@@ -8,8 +8,9 @@ import com.booking.project.reservation.Reservation;
  */
 public interface AdminObserver {
     /**
-     * @param reservation the changed reservation
+     * @param changedReservation the changed reservation
+     * @param oldReservation the old reservation in case of an update, otherwise is null
      * @param notificationType the type of reservation(add/delete/update)
      */
-    void update(Reservation reservation, String notificationType);
+    void update(Reservation changedReservation, Reservation oldReservation, String notificationType);
 }

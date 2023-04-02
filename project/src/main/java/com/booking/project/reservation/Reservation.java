@@ -9,7 +9,7 @@ import java.time.LocalDate;
  */
 @Entity
 @Table(name  = "reservations")
-public class Reservation {
+public class Reservation implements Cloneable{
     @Id
     @SequenceGenerator(
             name = "reservation_sequence",
@@ -87,5 +87,16 @@ public class Reservation {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 '}';
+    }
+
+    /**
+     * Method used to make a deep copy of a Reservation
+     * @return A deep copy of a Reservation
+     * @throws CloneNotSupportedException
+     */
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Reservation cloned = (Reservation) super.clone();
+        return cloned;
     }
 }
