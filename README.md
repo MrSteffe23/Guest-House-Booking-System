@@ -52,8 +52,6 @@ This design pattern was used for notifying every admin registered in database in
 The relational database is built using **[PostgreSQL]**.   
 *Database Diagram*:    
 
-![Database Diagram](https://www.planttext.com/api/plantuml/svg/hLRBRjim4BphAxOfKDX0WpG5KWI2OEJKIw-z2vIuiHQcI6D9lrBdtqizB5csPDbfTJ3iNGrdPZaa_6ATOBVALH1yalXA6i69HE5aEmNKZjmEjX15CFdz5JOPEPp2RDQykcJA1U_Y1UuAG9JCejGem-7dvFdvnwF_-SMtPj53MPt1Ddf8MlIhOQIvRj0rL9JF6JIm2z9BmI87vT5kjqGmx39pr62pqZ8rh97XyLiGL5Q4p4bFuKy0qE4a6QyiyZG4qWxd7XD5FtzvU_wzfR1sOrY6i1QSPe8dtv-UfcNdo3F95XoyrtI9S1aRazj-oinuqbxEd9WDspZrBboxhk_Op6oGGqYCKIXqKIfOt2hfr2ozuRbWYKwGikUDJNg2rejEOTmfoWyPrQiyAUmSEVHBzHbtwxvg5PJhZOuQIHNvi0_u6Cm8vfwkXoqp6kE3nzEka9BHVaJagqX9aIEyUTurSXThaTyIa759HgaYcVzhScDyfSK3sU0abKc58wFFE_t-FMtgoun2zQf8QEw5D28OruIRspVXojcK5t9VwYNQb6dPxsnqT8nloEjoBlyglJejm-9ZAPoVP_5PRhQM9vLHiSLm3YgBxuFxDhHCKDxvS7ZUz_Vt-tsvb6sA8TpL-n2Il0kQQ_iO0LNYEeYoL47g-m-kXzGtJLTNLzY9hlRONqtI7CkhIUfCdyYwID8FkKpIHh15T2PI8QhI1Sn5OIy-SFuFpLy0)
-
 ![public](https://user-images.githubusercontent.com/101935675/229435197-f7a9506f-7972-40cd-aef2-259080b5b5b6.png)
 
 
