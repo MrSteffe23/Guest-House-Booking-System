@@ -31,8 +31,31 @@ public class ClientController {
         return clientService.getClients();
     }
 
+    /**
+     * Inserts a new Client in the database, if possible.
+     * @param client JSON with all the data for a Client
+     */
     @PostMapping
     public void createClient(@RequestBody Client client){
         clientService.createClient(client);
+    }
+
+    /**
+     * Deletes a Client from the database, if possible.
+     * @param id the id of the Client to be deleted.
+     */
+    @DeleteMapping("/{id}")
+    public void deleteClient(@PathVariable Long id){
+        clientService.deleteClient(id);
+    }
+
+    /**
+     * Updates a Client from the database with new specifications.
+     * @param id the id of the Client to be updated.
+     * @param client the Client with new specifications.
+     */
+    @PutMapping("/{id}")
+    public void updateClient(@RequestBody Client client, @PathVariable Long id){
+        clientService.updateClient(id, client);
     }
 }

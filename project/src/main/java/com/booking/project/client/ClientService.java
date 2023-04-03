@@ -59,9 +59,26 @@ public class ClientService implements IClientService{
         clientRepository.deleteById(id);
     }
 
+    /**
+     * First, this method checks to see if a Client with the specified id exists, so that it can be updated.<br>
+     * Second, the method verifies the new Clients email and phoneNumber.<br>
+     * Then, the Client extracted with the specified id is updated and then saved in the database.
+     * @param id the id of the Client to be updated.
+     * @param client the Client with new specifications.
+     */
     @Override
     public void updateClient(Long id, Client client) {
+        checkValidIdClient(id);
+        validateEmail(client.getEmail());
+        validatePhoneNumber(client.getPhoneNumber());
+        Client clientToUpdate = clientRepository.findById(id).get();
 
+        clientToUpdate.setAddress(client.getAddress());
+        clientToUpdate.setEmail(client.getEmail());
+        clientToUpdate.setPhoneNumber(client.getPhoneNumber());
+        clientToUpdate.setName(client.getName());
+
+        clientRepository.save(clientToUpdate);
     }
 
     /**

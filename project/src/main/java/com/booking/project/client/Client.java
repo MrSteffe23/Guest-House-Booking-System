@@ -43,11 +43,11 @@ public class Client{
         this.id = id;
     }
 
-    public String getIdUser() {
+    public String getName() {
         return name;
     }
 
-    public void setIdUser(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
