@@ -24,16 +24,35 @@ The ***admin*** can do the following operations:
 Two different users will be able to access the site, and they are **the admin**, and **the normal user**, which will be later divided into **follower** (for users who wants to be notified when the house will be free for a reservation) or **client** (for users who make a reservation - they are tagged as a "client" in the data base).
 
 ## API Requirements:
-Generic **CRUD** operations for the management of rooms, bathrooms, facilities and others.
-There will be more specific API's built along the way of developing this application and they will be added here.
+Every endpoint starts with "localhost:8080" and continues with the second part of the address. This application contains generic **CRUD** operations for the management of:     
+### Houses   
+- "/api/v1/houses" -> this address is responsible for house management. These endpoints are for create, read, update and delete a house from the database     
+    "/api/v1/houses/id" -> this is for update and delete, where *id* is the *id* of the house that needs to be changed
+### Facilities 
+- "/api/v1/facilities" -> this address is responsible for the management of facilities. It consists of create, read, update and delete    
+    "/api/v1/facilities/id" -> specific for update and delete
+### Reservations 
+- "/api/v1/reservations" -> address used to create, read, update and delete reservations from the database.    
+    "/api/v1/reservations/id" -> specific for update and delete
+### Reviews 
+- "/api/v1/reviews" -> address used to controll the reviews added by some users. It consists of create, delete
+    "/api/v1/reviews/id" -> specific for update and delete
+### User 
+- "/api/v1/users" -> the users are manipulated at this endpoint. They can be only created, deleted, or read, without updating.
+### Client 
+- "/api/v1/clients" -> every client which makes a reservation is added in the database through this endpoint. For the moment, a client can only be created or read, but they will get more options soon
+### Admin 
+- "/api/v1/admins" -> this is the endpoint for the admins. An admin can be created, deleted or read, nothing more.     
+
+## Design Pattern
+- **Observer Pattern**:     
+This design pattern was used for notifying every admin registered in database in case of a change in *reservations* table. The **ReservationService** implements the interface called **ReservationObservable** which has only one method, used for notifying all admins. On the other hand, **Admin** implements the interface called **AdminObserver**, which has also one method called **update**. This way, every time a client creates a new reservation, deletes a reservation or just updates an existing one, every admin from the database will be notified via an email, specifying what happend through a specific message (if someone created a new reservation, if someone deleted one or an existing reservation was modified).    
 
 ## Data Model:
 The relational database is built using **[PostgreSQL]**.   
 *Database Diagram*:    
 
-![Database Diagram](https://www.planttext.com/api/plantuml/svg/hLRBRjim4BphAxOfKDX0WpG5KWI2OEJKIw-z2vIuiHQcI6D9lrBdtqizB5csPDbfTJ3iNGrdPZaa_6ATOBVALH1yalXA6i69HE5aEmNKZjmEjX15CFdz5JOPEPp2RDQykcJA1U_Y1UuAG9JCejGem-7dvFdvnwF_-SMtPj53MPt1Ddf8MlIhOQIvRj0rL9JF6JIm2z9BmI87vT5kjqGmx39pr62pqZ8rh97XyLiGL5Q4p4bFuKy0qE4a6QyiyZG4qWxd7XD5FtzvU_wzfR1sOrY6i1QSPe8dtv-UfcNdo3F95XoyrtI9S1aRazj-oinuqbxEd9WDspZrBboxhk_Op6oGGqYCKIXqKIfOt2hfr2ozuRbWYKwGikUDJNg2rejEOTmfoWyPrQiyAUmSEVHBzHbtwxvg5PJhZOuQIHNvi0_u6Cm8vfwkXoqp6kE3nzEka9BHVaJagqX9aIEyUTurSXThaTyIa759HgaYcVzhScDyfSK3sU0abKc58wFFE_t-FMtgoun2zQf8QEw5D28OruIRspVXojcK5t9VwYNQb6dPxsnqT8nloEjoBlyglJejm-9ZAPoVP_5PRhQM9vLHiSLm3YgBxuFxDhHCKDxvS7ZUz_Vt-tsvb6sA8TpL-n2Il0kQQ_iO0LNYEeYoL47g-m-kXzGtJLTNLzY9hlRONqtI7CkhIUfCdyYwID8FkKpIHh15T2PI8QhI1Sn5OIy-SFuFpLy0)
-
-![GuestHouse](https://user-images.githubusercontent.com/101935675/226185466-4733cdb5-f083-415d-a8f7-b59e65a620a3.png)
+![public](https://user-images.githubusercontent.com/101935675/229435197-f7a9506f-7972-40cd-aef2-259080b5b5b6.png)
 
 
 [PostgreSQL]: <http://postgresql.org>
