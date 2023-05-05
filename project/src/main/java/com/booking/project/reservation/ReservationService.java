@@ -70,7 +70,7 @@ public class ReservationService implements IReservationService, ReservationObser
     public void updateReservation(Reservation reservation, Long id) {
         checkValidIdReservation(id);
         Reservation reservationToUpdate = reservationRepository.findById(id).get();
-        Reservation oldReservation = null;
+        Reservation oldReservation;
         try {
             oldReservation = (Reservation) reservationToUpdate.clone();
         } catch (CloneNotSupportedException e) {

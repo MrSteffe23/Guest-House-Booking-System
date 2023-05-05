@@ -96,8 +96,8 @@ public class ReviewTests {
         Optional<Review> reviewOptional = Optional.ofNullable(review);
         when(reviewRepositoryMock.findById(id)).thenReturn(reviewOptional);
 
-        IReviewService reviewService = new ReviewService(reviewRepositoryMock);
-        reviewService.deleteReview(id);
+        ReviewService reviewService = new ReviewService(reviewRepositoryMock);
+        reviewService.checkValidIdReview(id);
         verify(reviewRepositoryMock).findById(id);
     }
 }
