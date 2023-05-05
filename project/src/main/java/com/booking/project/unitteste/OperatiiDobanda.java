@@ -8,7 +8,7 @@ public class OperatiiDobanda {
     }
 
     public OperatiiDobanda(){
-        this.dbOperations = dbOperations;
+        
     }
 
     public int calculDobanda(TipDobanda tipDobanda){
