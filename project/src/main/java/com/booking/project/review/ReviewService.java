@@ -27,7 +27,8 @@ public class ReviewService implements IReviewService{
     }
 
     /**
-     * This method is used for display purposes. You can see all the reviews in the database, regardless of the house they belong to.
+     * This method is used for display purposes. You can see all the reviews in the database, regardless of the house
+     * they belong to.
      * @return all the reviews in the database in a List.
      */
     @Override
@@ -42,7 +43,7 @@ public class ReviewService implements IReviewService{
      */
     @Override
     public List<Review> getReviews(Long id_house) {
-        return null;
+        return reviewRepository.findByIdHouse(id_house);
     }
 
     /**

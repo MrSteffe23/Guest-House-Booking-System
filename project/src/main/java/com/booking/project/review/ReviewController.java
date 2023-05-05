@@ -33,6 +33,16 @@ public class ReviewController {
     }
 
     /**
+     * This method is used for display purposes, or for debugging.
+     * @param id the id of the House whose reviews I want to obtain.
+     * @return a list with all the Reviews in the database, associated with a specified house by that id variable.
+     */
+    @GetMapping("/{id}")
+    public List<Review> getReviews(@PathVariable Long id){
+        return reviewService.getReviews(id);
+    }
+
+    /**
      * Inserts a new Review in the database, if possible.
      * @param review JSON with all the data for a Review
      */

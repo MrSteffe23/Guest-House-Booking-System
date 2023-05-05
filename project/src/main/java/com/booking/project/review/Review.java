@@ -20,7 +20,9 @@ public class Review {
             strategy = GenerationType.SEQUENCE
     )
     private Long id;
+    @Column(name = "id_house")
     private Long idHouse;
+    @Column(name = "id_user")
     private Long idUser;
     private String description;
 

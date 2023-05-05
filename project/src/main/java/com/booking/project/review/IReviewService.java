@@ -39,7 +39,4 @@ public interface IReviewService {
      * @param review the new specifications for the Review.
      */
     void updateReview(Review review, Long id);
-
-
-
 }
