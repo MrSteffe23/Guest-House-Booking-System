@@ -1,7 +1,5 @@
 package com.booking.project.review;
 
-import com.booking.project.house.IHouseService;
-import com.booking.project.reservation.Reservation;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -84,7 +82,7 @@ public class ReviewService implements IReviewService{
         reviewToUpdate.setDescription(review.getDescription());
         reviewToUpdate.setStarsCount(review.getStarsCount());
 
-        reviewRepository.save(review);
+        reviewRepository.save(reviewToUpdate);
     }
 
     /**
