@@ -45,7 +45,7 @@ public class ReservationService implements IReservationService, ReservationObser
      */
     @Override
     public List<Reservation> getReservations(Long id_house) {
-        return null;
+        return reservationRepository.findByIdHouse(id_house);
     }
 
     /**

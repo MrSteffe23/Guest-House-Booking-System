@@ -20,7 +20,9 @@ public class Reservation implements Cloneable{
             strategy = GenerationType.SEQUENCE
     )
     private Long id;
+    @Column(name = "id_house")
     private Long idHouse;
+    @Column(name = "id_client")
     private Long idClient;
 
     private LocalDate startDate;
