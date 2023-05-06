@@ -1,7 +1,8 @@
 package com.booking.project.client;
 
-import com.booking.project.user.User;
 import jakarta.persistence.*;
+
+import java.util.Objects;
 
 /**
  * This is a data Class. It is used to match the attributes from the database.
@@ -73,5 +74,18 @@ public class Client{
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(name, client.name) && Objects.equals(email, client.email) && Objects.equals(phoneNumber, client.phoneNumber) && Objects.equals(address, client.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email, phoneNumber, address);
     }
 }
