@@ -44,11 +44,10 @@ public class FacilityController {
     /**
      * Inserts a new Facility in the database, if possible.
      * @param facility JSON with all the data for a Facility
-     * @param id_house the id of the house which gets a new facility
      */
-    @PostMapping("/{id_house}")
-    public void createFacility(@RequestBody Facility facility,@PathVariable Long id_house){
-        facilityService.createFacility(facility, id_house);
+    @PostMapping
+    public void createFacility(@RequestBody Facility facility){
+        facilityService.createFacility(facility);
     }
 
     /**
