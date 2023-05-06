@@ -25,5 +25,4 @@ public interface IUserService {
      * @param id the id of the User to be deleted.
      */
     void deleteUser(Long id);
-
 }

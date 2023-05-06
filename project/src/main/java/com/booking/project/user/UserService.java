@@ -40,7 +40,7 @@ public class UserService implements IUserService{
      */
     @Override
     public void createUser(User user) {
-        validateUserame(user.getUsername());
+        validateUsername(user.getUsername());
         userRepository.save(user);
     }
 
@@ -62,7 +62,7 @@ public class UserService implements IUserService{
      * @param username the username of a possible User.
      * @throws IllegalStateException if the database already have a user called "username".
      */
-    private void validateUserame(String username){
+    private void validateUsername(String username){
         Optional<User> userOptional = userRepository.getUserByusername(username);
         if(userOptional.isPresent()){
             throw new IllegalStateException(String.format("The User %s already exists. Please try another username.", username));
