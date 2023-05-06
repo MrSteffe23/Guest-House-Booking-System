@@ -1,6 +1,5 @@
 package com.booking.project.review;
 
-import com.booking.project.reservation.ReservationService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
