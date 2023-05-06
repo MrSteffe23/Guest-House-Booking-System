@@ -32,6 +32,16 @@ public class FacilityController {
     }
 
     /**
+     * This method is used for display purposes, or for debugging.
+     * @param id the id of the House whose Facilities I want to obtain.
+     * @return a list with all the Facilities in the database, associated with a specified house by that id variable.
+     */
+    @GetMapping("/{id}")
+    public List<Facility> getFacilities(@PathVariable Long id){
+        return facilityService.getFacilities(id);
+    }
+
+    /**
      * Inserts a new Facility in the database, if possible.
      * @param facility JSON with all the data for a Facility
      * @param id_house the id of the house which gets a new facility

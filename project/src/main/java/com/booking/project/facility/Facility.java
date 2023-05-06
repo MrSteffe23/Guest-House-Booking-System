@@ -18,6 +18,7 @@ public class Facility {
             strategy = GenerationType.SEQUENCE
     )
     private Long id;
+    @Column(name = "id_house")
     private Long idHouse;
     private String facilityName;
     private String details;
