@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.aspectj.bridge.MessageUtil.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
@@ -61,7 +60,7 @@ public class ClientTests {
             return;
         }
         // If no exception is thrown, fail the test
-        fail("Expected exception was not thrown.");
+        assert(2<1);
     }
 
     @Test
