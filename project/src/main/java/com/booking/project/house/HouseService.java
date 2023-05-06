@@ -96,7 +96,7 @@ public class HouseService implements IHouseService{
      * @param name the name of a possible House.
      * @throws IllegalStateException if the database already have a house called "name".
      */
-    private void validateName(String name){
+    public void validateName(String name){
         Optional<House> houseOptional = houseRepository.getHouseByname(name);
         if(houseOptional.isPresent()){
             throw new IllegalStateException(String.format("The house %s already exists", name));

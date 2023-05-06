@@ -11,5 +11,10 @@ import java.util.Optional;
  * Here you can define queries, or use some predefined methods.
  */
 public interface HouseRepository extends JpaRepository<House, Long> {
+    /**
+     * Custom method which gets a specific house from the database
+     * @param name The name of the house that I want to get from the database
+     * @return A house from the database
+     */
     Optional<House> getHouseByname(String name);
 }

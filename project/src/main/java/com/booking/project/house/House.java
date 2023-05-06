@@ -2,6 +2,8 @@ package com.booking.project.house;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 /**
  * This is a data Class. It is used to match the attributes from the database.
  */
@@ -71,5 +73,18 @@ public class House {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        House house = (House) o;
+        return Objects.equals(name, house.name) && Objects.equals(address, house.address) && Objects.equals(location, house.location) && Objects.equals(price, house.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, address, location, price);
     }
 }
