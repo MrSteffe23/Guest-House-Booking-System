@@ -79,7 +79,7 @@ public class BedroomService implements IBedroomService{
     public void updateBedroom(Bedroom bedroom, Long id) {
         checkValidBedroom(id);
         Bedroom bedroomToUpdate = bedroomRepository.findById(id).get();
-        if(!(bedroomToUpdate.getNumber()!=bedroom.getNumber() && bedroomToUpdate.getIdHouse()==bedroom.getIdHouse())){
+        if(!(bedroomToUpdate.getNumber()==bedroom.getNumber() && bedroomToUpdate.getIdHouse()==bedroom.getIdHouse())){
             checkUniqueIdHouseNumber(bedroom);
         }
 
