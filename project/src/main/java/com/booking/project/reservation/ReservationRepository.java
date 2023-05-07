@@ -1,6 +1,5 @@
 package com.booking.project.reservation;
 
-import com.booking.project.review.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
