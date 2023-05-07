@@ -90,7 +90,7 @@ This design pattern was used for notifying every admin registered in database in
 The relational database is built using **[PostgreSQL]**.   
 *Database Diagram*:    
 
-![public](https://user-images.githubusercontent.com/101935675/229435197-f7a9506f-7972-40cd-aef2-259080b5b5b6.png)
+![UML](https://user-images.githubusercontent.com/101935675/236671893-7ae285ef-8d36-4848-94cf-d842076c13e3.png)
 
 
 [PostgreSQL]: <http://postgresql.org>
