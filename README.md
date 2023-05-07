@@ -82,12 +82,12 @@ Every endpoint starts with "localhost:8080" and continues with the second part o
 | "/api/v1/admins" | An admin can be ***created*** using this endpoint. This endpoint can also be used for ***reading*** all admins from the database. |
 | "/api/v1/admins/id" | An admin can be ***deleted*** or ***updated*** using this endpoint. The admin modified is specified using the *id* from the end of the url.|
 
-## Unit Testing:
-For unit testing, I used JUnit. I have separated the **Service** layer from the **JPA** using the **Repository Interface**, and then I have tested only the Service methods. I used ***mockito*** for every dependency of the service layer. This way, I have easily tested every method.
-
 ## Design Patterns
 - **Observer Pattern**:     
 This design pattern was used for notifying every admin registered in database in case of a change in *reservations* table. The **ReservationService** implements the interface called **ReservationObservable** which has only one method ("*notifyAdmins(changedReservation, oldReservation, notificationType"*), used for notifying all admins. On the other hand, **Admin** implements the interface called **AdminObserver**, which has also one method called **update**. This way, every time a client creates a new reservation, deletes a reservation or just updates an existing one, every admin from the database will be notified via an email, specifying what happend through a specific message (if someone created a new reservation, if someone deleted one or an existing reservation was modified).    
+
+## Unit Testing:
+For unit testing, I used JUnit. I have separated the **Service** layer from the **JPA** using the **Repository Interface**, and then I have tested only the Service methods. I used ***mockito*** for every dependency of the service layer. This way, I have easily tested every method.
 
 ## Data Model:
 The relational database is built using **[PostgreSQL]**.   
