@@ -1,4 +1,4 @@
-package com.booking.project.unitteste;
+package com.booking.project.laboratory.uniteste;
 
 public class OperatiiDobanda {
     public InterfataDBOperations dbOperations;
@@ -8,7 +8,7 @@ public class OperatiiDobanda {
     }
 
     public OperatiiDobanda(){
-        this.dbOperations = dbOperations;
+        
     }
 
     public int calculDobanda(TipDobanda tipDobanda){

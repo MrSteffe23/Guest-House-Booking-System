@@ -35,6 +35,15 @@ public class HouseService implements IHouseService{
     }
 
     /**
+     * Get a House by an id
+     * @return The House with the specified id
+     */
+    @Override
+    public House getHouse(Long id) {
+        return houseRepository.findById(id).get();
+    }
+
+    /**
      * Creates a House in the database, given the data in the parameter.
      * @param house JSON with data for a house.
      */
@@ -96,7 +105,7 @@ public class HouseService implements IHouseService{
      * @param name the name of a possible House.
      * @throws IllegalStateException if the database already have a house called "name".
      */
-    private void validateName(String name){
+    public void validateName(String name){
         Optional<House> houseOptional = houseRepository.getHouseByname(name);
         if(houseOptional.isPresent()){
             throw new IllegalStateException(String.format("The house %s already exists", name));

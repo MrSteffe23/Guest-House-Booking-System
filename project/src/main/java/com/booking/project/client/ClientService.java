@@ -37,14 +37,23 @@ public class ClientService implements IClientService{
     }
 
     /**
+     * This method is used for display purposes. You can search for a client in data base
+     * @return a client from the database
+     */
+    @Override
+    public Client getClient(Long id) {
+        return clientRepository.findById(id).get();
+    }
+
+    /**
      * Creates a Client in the database, given the data in the parameter.
      * @param client JSON with data for a house.
      */
     @Override
-    public void createClient(Client client) {
+    public Client createClient(Client client) {
         validateEmail(client.getEmail());
         validatePhoneNumber(client.getPhoneNumber());
-        clientRepository.save(client);
+        return clientRepository.save(client);
     }
 
     /**

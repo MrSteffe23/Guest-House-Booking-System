@@ -12,5 +12,6 @@ import java.util.Optional;
  */
 public interface AdminRepository extends JpaRepository<Admin, Long> {
     Optional<Admin> getHouseByusername(String username);
+    Optional<Admin> findByUsernameAndPassword(String username, String password);
 
 }

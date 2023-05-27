@@ -45,7 +45,7 @@ public class ReservationService implements IReservationService, ReservationObser
      */
     @Override
     public List<Reservation> getReservations(Long id_house) {
-        return null;
+        return reservationRepository.findByIdHouse(id_house);
     }
 
     /**
@@ -70,7 +70,7 @@ public class ReservationService implements IReservationService, ReservationObser
     public void updateReservation(Reservation reservation, Long id) {
         checkValidIdReservation(id);
         Reservation reservationToUpdate = reservationRepository.findById(id).get();
-        Reservation oldReservation = null;
+        Reservation oldReservation;
         try {
             oldReservation = (Reservation) reservationToUpdate.clone();
         } catch (CloneNotSupportedException e) {

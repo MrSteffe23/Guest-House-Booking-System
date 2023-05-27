@@ -1,9 +1,9 @@
 package com.booking.project;
 
+import com.booking.project.laboratory.uniteste.*;
 import com.booking.project.review.Review;
 import com.booking.project.review.ReviewRepository;
 import com.booking.project.review.ReviewService;
-import com.booking.project.unitteste.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;

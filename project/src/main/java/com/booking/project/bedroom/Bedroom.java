@@ -2,6 +2,8 @@ package com.booking.project.bedroom;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 /**
  * This is a data Class. It is used to match the attributes from the database.
  */
@@ -18,9 +20,13 @@ public class Bedroom {
             strategy = GenerationType.SEQUENCE
     )
     private Long id;
+    @Column(name = "id_house")
     private Long idHouse;
     private int number;
+    @Column(name = "beds_count")
     private int bedsCount;
+
+    @Column(name = "tvs_count")
     private int tvsCount;
     private String color;
     private String details;
@@ -93,5 +99,20 @@ public class Bedroom {
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bedroom bedroom = (Bedroom) o;
+        return number == bedroom.number && bedsCount == bedroom.bedsCount && tvsCount == bedroom.tvsCount
+                && Objects.equals(idHouse, bedroom.idHouse)
+                && Objects.equals(color, bedroom.color) && Objects.equals(details, bedroom.details);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, idHouse, number, bedsCount, tvsCount, color, details);
     }
 }

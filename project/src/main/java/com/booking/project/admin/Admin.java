@@ -3,6 +3,8 @@ package com.booking.project.admin;
 import com.booking.project.reservation.Reservation;
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 /**
  * This is a data Class. It is used to match the attributes from the database.
  */
@@ -64,6 +66,19 @@ public class Admin implements AdminObserver{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Admin admin = (Admin) o;
+        return Objects.equals(username, admin.username) && Objects.equals(password, admin.password) && Objects.equals(email, admin.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, email);
     }
 
     /**

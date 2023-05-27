@@ -32,6 +32,15 @@ public class UserController {
     }
 
     /**
+     * This method is used for display purposes, or for debugging.
+     * @return An user from the database.
+     */
+    @GetMapping("/{id}")
+    public User getUser(@PathVariable Long id){
+        return userService.getUser(id);
+    }
+
+    /**
      * Deletes a User from the database, if possible.
      * @param id the id of the User to be deleted.
      */
@@ -45,7 +54,7 @@ public class UserController {
      * @param user JSON with all the data for a User
      */
     @PostMapping
-    public void createUser(@RequestBody User user){
-        userService.createUser(user);
+    public User createUser(@RequestBody User user){
+        return userService.createUser(user);
     }
 }

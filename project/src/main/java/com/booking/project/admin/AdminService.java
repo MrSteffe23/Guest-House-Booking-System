@@ -59,6 +59,42 @@ public class AdminService implements IAdminService{
     }
 
     /**
+     * First, this method checks to see if an Admin with the specified id exists, so that it can be updated.<br>
+     * Second, the method verifies the username and email of the new admin.<br>
+     * Then, the Admin extracted with the specified id is updated and then saved in the database.
+     * @param id the id of the Admin to be updated.
+     * @param admin the Admin with new specifications.
+     */
+    @Override
+    public void updateAdmin(Long id, Admin admin) {
+        checkValidIdAdmin(id);
+        validateEmail(admin.getEmail());
+        Admin adminToUpdate = adminRepository.findById(id).get();
+        if(!(admin.getUsername().equals(adminToUpdate.getUsername())))
+            validateUsername(admin.getUsername());
+
+        adminToUpdate.setUsername(admin.getUsername());
+        adminToUpdate.setPassword(admin.getPassword());
+        adminToUpdate.setEmail(admin.getEmail());
+
+        adminRepository.save(adminToUpdate);
+    }
+
+    /**
+     * Checks if an admin is in the database
+     * @param username username of the admin to search for
+     * @param password password of the admin to search for
+     */
+    @Override
+    public boolean checkLoginAdmin(String username, String password) {
+        Optional<Admin> adminOptional = adminRepository.findByUsernameAndPassword(username, password);
+        if(!adminOptional.isPresent()){
+            throw new IllegalStateException(String.format("The admin %s with password %s doesn't exist", username, password));
+        }
+        return true;
+    }
+
+    /**
      * Functions which verifies if the database has an admin with the specified id
      * @param id id of the admin that you want to look for
      */

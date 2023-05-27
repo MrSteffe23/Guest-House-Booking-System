@@ -2,6 +2,8 @@ package com.booking.project.review;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 /**
  * This is a data Class. It is used to match the attributes from the database.
  */
@@ -18,7 +20,9 @@ public class Review {
             strategy = GenerationType.SEQUENCE
     )
     private Long id;
+    @Column(name = "id_house")
     private Long idHouse;
+    @Column(name = "id_user")
     private Long idUser;
     private String description;
 
@@ -74,5 +78,20 @@ public class Review {
 
     public void setStarsCount(Long starsCount) {
         this.starsCount = starsCount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Review review = (Review) o;
+        return  Objects.equals(idHouse, review.idHouse)
+                && Objects.equals(idUser, review.idUser) && Objects.equals(description, review.description)
+                && Objects.equals(starsCount, review.starsCount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, idHouse, idUser, description, starsCount);
     }
 }

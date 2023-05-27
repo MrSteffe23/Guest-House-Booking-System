@@ -36,12 +36,22 @@ public class FacilityService implements IFacilityService{
     }
 
     /**
-     * Creates a Facility in the database, given the data in the parameter.
-     * @param facility JSON with data for a facility.
-     * @param id_house id for the house which gets a new facility (this "id" must come from a valid house)
+     * This method is used for display purposes, or for statistics. You can see all the facilities in the database, for
+     * a specific house given by an id
+     * @param id_house the id of the House whose facilities you want to get
+     * @return all the houses in the database in a List.
      */
     @Override
-    public void createFacility(Facility facility, Long id_house) {
+    public List<Facility> getFacilities(Long id_house) {
+        return facilityRepository.findByIdHouse(id_house);
+    }
+
+    /**
+     * Creates a Facility in the database, given the data in the parameter.
+     * @param facility JSON with data for a facility.
+     */
+    @Override
+    public void createFacility(Facility facility) {
         facilityRepository.save(facility);
     }
 
@@ -69,8 +79,8 @@ public class FacilityService implements IFacilityService{
         Facility facilityToUpdate = facilityRepository.findById(id).get();
 
         facilityToUpdate.setFacilityName(facility.getFacilityName());
-        facilityToUpdate.setDetails(facilityToUpdate.getDetails());
-        facilityToUpdate.setIdHouse(facility.getId());
+        facilityToUpdate.setDetails(facility.getDetails());
+        facilityToUpdate.setIdHouse(facility.getIdHouse());
 
         facilityRepository.save(facilityToUpdate);
     }
@@ -79,7 +89,7 @@ public class FacilityService implements IFacilityService{
      * Functions which verifies if the database has a facility with the specified id
      * @param id id of the facility that you want to look for
      */
-    private void checkValidFacility(Long id){
+    public void checkValidFacility(Long id){
         Optional<Facility> facilityOptional = facilityRepository.findById(id);
         if(!facilityOptional.isPresent()){
             throw new IllegalStateException(String.format("The Facility with id %s doesn't exist.", id));

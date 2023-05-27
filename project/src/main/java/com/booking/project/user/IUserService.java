@@ -15,15 +15,21 @@ public interface IUserService {
     List<User> getUsers();
 
     /**
+     * Get a User in the database
+     * @param id the id of the User to be returned.
+     * @return A User with the specified id found in the database.
+     */
+    User getUser(Long id);
+
+    /**
      * Method used to insert a new User in the database
      * @param user a new User to insert in the database
      */
-    void createUser(User user);
+    User createUser(User user);
 
     /**
      * Method used to delete a User from the database (if the User exists).
      * @param id the id of the User to be deleted.
      */
     void deleteUser(Long id);
-
 }

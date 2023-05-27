@@ -15,10 +15,16 @@ public interface IClientService {
     List<Client> getClients();
 
     /**
+     * Get a Client from the database
+     * @return a Client from the database
+     */
+    Client getClient(Long id);
+
+    /**
      * Method used to insert a new Client in the database
      * @param client a new Client to insert in the database
      */
-    void createClient(Client client);
+    Client createClient(Client client);
 
     /**
      * Method used to delete a Client from the database (if the Client exists).

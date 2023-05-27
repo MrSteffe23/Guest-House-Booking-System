@@ -14,6 +14,12 @@ public interface IHouseService {
     List<House> getHouses();
 
     /**
+     * Get a House by an id
+     * @return The House with the specified id
+     */
+    House getHouse(Long id);
+
+    /**
      * Method used to insert a new House in the database
      * @param house a new House to insert in the database
      */

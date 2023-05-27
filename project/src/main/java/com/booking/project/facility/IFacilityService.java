@@ -15,11 +15,17 @@ public interface IFacilityService {
     List<Facility> getAllFacilities();
 
     /**
+     * Get all Facilities in the database for a specific house given by an id
+     * @param id_house the id of the House whose facilities you want to get
+     * @return The list of the Facilities for a specific house
+     */
+    List<Facility> getFacilities(Long id_house);
+
+    /**
      * Method used to insert a new Facility in the database
      * @param facility a new Facility to insert in the database
-     * @param id_house id for the house which gets a new facility (this "id" must come from a valid house)
      */
-    void createFacility(Facility facility, Long id_house);
+    void createFacility(Facility facility);
 
     /**
      * Method used to delete a Facility from the database (if the Facility exists).

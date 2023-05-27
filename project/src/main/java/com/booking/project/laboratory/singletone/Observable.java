@@ -1,4 +1,4 @@
-package com.booking.project.singletone;
+package com.booking.project.laboratory.singletone;
 
 public class Observable {
     Observer observer;

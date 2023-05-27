@@ -32,12 +32,21 @@ public class ClientController {
     }
 
     /**
+     * This method is used for display purposes, or for debugging.
+     * @param id the id of the Client to be found.
+     */
+    @GetMapping("/{id}")
+    public Client getClient(@PathVariable Long id){
+        return clientService.getClient(id);
+    }
+
+    /**
      * Inserts a new Client in the database, if possible.
      * @param client JSON with all the data for a Client
      */
     @PostMapping
-    public void createClient(@RequestBody Client client){
-        clientService.createClient(client);
+    public Client createClient(@RequestBody Client client){
+        return clientService.createClient(client);
     }
 
     /**

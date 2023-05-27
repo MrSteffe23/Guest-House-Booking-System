@@ -3,6 +3,7 @@ package com.booking.project.reservation;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * This is a data Class. It is used to match the attributes from the database.
@@ -20,7 +21,9 @@ public class Reservation implements Cloneable{
             strategy = GenerationType.SEQUENCE
     )
     private Long id;
+    @Column(name = "id_house")
     private Long idHouse;
+    @Column(name = "id_client")
     private Long idClient;
 
     private LocalDate startDate;
@@ -76,6 +79,19 @@ public class Reservation implements Cloneable{
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reservation that = (Reservation) o;
+        return Objects.equals(idHouse, that.idHouse) && Objects.equals(idClient, that.idClient) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, idHouse, idClient, startDate, endDate);
     }
 
     @Override

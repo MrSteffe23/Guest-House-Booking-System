@@ -49,4 +49,24 @@ public class AdminController{
     public void deleteAdmin(@PathVariable Long id){
         adminService.deleteAdmin(id);
     }
+
+    /**
+     * Updates an Admin from the database with new specifications.
+     * @param id the id of the Admin to be updated.
+     * @param admin the Admin with new specifications.
+     */
+    @PutMapping("/{id}")
+    public void updateClient(@RequestBody Admin admin, @PathVariable Long id){
+        adminService.updateAdmin(id, admin);
+    }
+
+    /**
+     * Checks if an admin is in the database
+     * @param username username of the admin to search for
+     * @param password password of the admin to search for
+     */
+    @GetMapping("/{username}/{password}")
+    public boolean checkLoginAdmin(@PathVariable String username,@PathVariable String password){
+        return adminService.checkLoginAdmin(username, password);
+    }
 }

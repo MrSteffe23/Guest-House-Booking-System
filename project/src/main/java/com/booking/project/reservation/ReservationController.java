@@ -31,6 +31,17 @@ public class ReservationController {
     }
 
     /**
+     * This method is used for display purposes, or for debugging.
+     * @param id the id of the House whose Reservations I want to obtain.
+     * @return a list with all the Reservations in the database, associated with a specified house by that id variable.
+     */
+    @GetMapping("/{id}")
+    public List<Reservation> getReservations(@PathVariable Long id){
+        return reservationService.getReservations(id);
+    }
+
+
+    /**
      * Inserts a new Reservation in the database, if possible.
      * @param reservation JSON with all the data for a reservation
      */

@@ -35,13 +35,24 @@ public class UserService implements IUserService{
     }
 
     /**
+     * This method is used for display purposes. You can see a user from the database.
+     * @param id the id of the User to be found.
+     * @return all a user from the database.
+     */
+    @Override
+    public User getUser(Long id) {
+        checkValidIdUser(id);
+        return userRepository.findById(id).get();
+    }
+
+    /**
      * Creates a User in the database, given the data in the parameter.
      * @param user JSON with data for a user.
      */
     @Override
-    public void createUser(User user) {
-        validateUserame(user.getUsername());
-        userRepository.save(user);
+    public User createUser(User user) {
+        validateUsername(user.getUsername());
+        return userRepository.save(user);
     }
 
     /**
@@ -62,7 +73,7 @@ public class UserService implements IUserService{
      * @param username the username of a possible User.
      * @throws IllegalStateException if the database already have a user called "username".
      */
-    private void validateUserame(String username){
+    private void validateUsername(String username){
         Optional<User> userOptional = userRepository.getUserByusername(username);
         if(userOptional.isPresent()){
             throw new IllegalStateException(String.format("The User %s already exists. Please try another username.", username));

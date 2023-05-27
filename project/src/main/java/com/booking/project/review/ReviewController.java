@@ -1,6 +1,5 @@
 package com.booking.project.review;
 
-import com.booking.project.reservation.ReservationService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +29,16 @@ public class ReviewController {
     @GetMapping
     public List<Review> getAllReviews(){
         return reviewService.getAllReviews();
+    }
+
+    /**
+     * This method is used for display purposes, or for debugging.
+     * @param id the id of the House whose reviews I want to obtain.
+     * @return a list with all the Reviews in the database, associated with a specified house by that id variable.
+     */
+    @GetMapping("/{id}")
+    public List<Review> getReviews(@PathVariable Long id){
+        return reviewService.getReviews(id);
     }
 
     /**

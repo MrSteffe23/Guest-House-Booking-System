@@ -1,4 +1,4 @@
-package com.booking.project.unitteste;
+package com.booking.project.laboratory.uniteste;
 
 public class Main {
     public static void main(String[] args) {

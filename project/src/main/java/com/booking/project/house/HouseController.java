@@ -32,6 +32,15 @@ public class HouseController {
     }
 
     /**
+     * This method is used for display purposes, or for debugging.
+     * @return a House given by an id
+     */
+    @GetMapping("/{id}")
+    public House getHouse(@PathVariable Long id){
+        return houseService.getHouse(id);
+    }
+
+    /**
      * Inserts a new House in the database, if possible.
      * @param house JSON with all the data for a House
      */
