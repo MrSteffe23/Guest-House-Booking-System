@@ -81,10 +81,23 @@ Every endpoint starts with "localhost:8080" and continues with the second part o
 | ------ | ------ |
 | "/api/v1/admins" | An admin can be ***created*** using this endpoint. This endpoint can also be used for ***reading*** all admins from the database. |
 | "/api/v1/admins/id" | An admin can be ***deleted*** or ***updated*** using this endpoint. The admin modified is specified using the *id* from the end of the url.|
+| "/api/v1/admins/{username}/{password}" | This endpoint returns a boolean, where true means that there is an admin with the specified username and password, and false mean otherwise.|
+
+### Images 
+The images are stored in the database as **arrays of bytes**. They also have a **typ**e attribute, which indicates where does that photo came from.
+| ENDPOINT | ROLE |
+| ------ | ------ |
+| "/api/v1/images/images" | This endpoint is used to retrieve all images from database, regardless of the type. |
+| "/api/v1/images/id/{id}" | Endpoint used to retrieve an image based on the given id.|
+| "/api/v1/images/type/{type}/{number}" | Endpoint used to retrieve an image based on the given type and number. The number represents the index of the image in the list of images with the same type.|
+| "/api/v1/images/typeId/{type}/{number}" | This endpoint is very similar with the previous one, except that this one returns an "Image" object, while the previous one returns "ResponseEntity<byte[]>"|
+| "/api/v1/images/type/{type}" | Endpoint used to retrieve an image based on the given type.|
+| "/api/v1/images/{type}" | Endpoint used to add an Image in database.|
+| "/api/v1/images/{id}" | Endpoint used to delete an image from the database based on the given id.|
 
 ## Design Patterns
 - **Observer Pattern**:     
-This design pattern was used for notifying every admin registered in database in case of a change in *reservations* table. The **ReservationService** implements the interface called **ReservationObservable** which has only one method ("*notifyAdmins(changedReservation, oldReservation, notificationType"*), used for notifying all admins. On the other hand, **Admin** implements the interface called **AdminObserver**, which has also one method called **update**. This way, every time a client creates a new reservation, deletes a reservation or just updates an existing one, every admin from the database will be notified via an email, specifying what happend through a specific message (if someone created a new reservation, if someone deleted one or an existing reservation was modified).    
+This design pattern was used for notifying every admin registered in database in case of a change in *reservations* table. The **ReservationService** implements the interface called **ReservationObservable** which has only one method ("*notifyAdmins(changedReservation, oldReservation, notificationType"*), used for notifying all admins. On the other hand, **Admin** implements the interface called **AdminObserver**, which has also one method called **update**. This way, every time a client creates a new reservation, deletes a reservation or just updates an existing one, every admin from the database will be notified via an email, specifying what happend through a specific message (if someone created a new reservation, if someone deleted one or an existing reservation was modified).  
 
 ## Unit Testing:
 For unit testing, I used JUnit. I have separated the **Service** layer from the **JPA** using the **Repository Interface**, and then I have tested only the Service methods. I used ***mockito*** for every dependency of the service layer. This way, I have easily tested every method.
@@ -93,7 +106,9 @@ For unit testing, I used JUnit. I have separated the **Service** layer from the 
 The relational database is built using **[PostgreSQL]**.   
 *Database Diagram*:    
 
-![UML](https://user-images.githubusercontent.com/101935675/236671893-7ae285ef-8d36-4848-94cf-d842076c13e3.png)
+![GuestHouse](https://github.com/MrSteffe23/Guest-House-Booking-System/assets/101935675/d82b6cb1-c8f4-44ae-b6c7-d7571b416ead)
 
+## Front-end:
+The front-end for this project was built using **React**. There are still a lot of functionalities left to implement, but this is a good demo for how the application will look in the final.
 
 [PostgreSQL]: <http://postgresql.org>
